@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selector</title>
+    <style>
+        .seat-selector {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .seat {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            text-align: center;
+            line-height: 50px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .seat.selected {
+            background-color: #ccc;
+        }
+
+        .seat.unavailable {
+            background-color: #ddd;
+            cursor: default;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .seat {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Seat Selector</h1>
+    <div class="seat-selector">
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat">3</div>
+        <div class="seat unavailable">4</div>
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        </div>
+
+    <script>
+        const seats = document.querySelectorAll('.seat');
+
+        seats.forEach(seat => {
+            seat.addEventListener('click', () => {
+                if (!seat.classList.contains('unavailable')) {
+                    seat.classList.toggle('selected');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
